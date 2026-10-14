@@ -1,202 +1,128 @@
-# Manware's AI Learning Toolkit
+# Earendel
 
-A customization that turns AI into a **learning companion** instead of a code generator. It makes you think, predict, and reason — while AI guides, questions, and diagnoses.
+**Learn by predicting, trying, and explaining.**
 
-**Core idea:** You try first. AI helps only after you commit to an answer.
+Earendel is my branded ChatGPT adaptation of [Manware’s AI Learning Toolkit](https://github.com/i-am-manware/Manware-s-AI-Learning-Toolkit/tree/copilot). It guides programming practice through questions, incremental hints, experiments, and teach-back.
+
+## Fork Attribution
 
-> **Looking for a different AI agent?** This repo has separate branches for each supported tool. Switch to the branch matching your agent — `copilot`, `cursor`, `claude-code`, `opencode`, or `antigravity` — to get the right configuration and code.
+Earendel is a derivative adaptation of the original toolkit by **i-am-manware**. The original author receives credit for the teaching workflows, hint ladder, reusable learning behaviors, and log templates. This edition adds ChatGPT skill routing, optional storage guidance, mode boundaries, and the Earendel branding.
 
----
+“Fork” describes the project’s derivation here: a GitHub-hosted fork has not been created. Earendel is independently branded and is not an official upstream release. Previously named `manware-learning-chatgpt` and briefly MoM-z14, it now uses the skill identifier `earendel`.
 
-## How It Works
+The comparison below documents what Earendel retains from its upstream source.
 
-```
-You try → You predict → AI gives hints → You implement → You test → You explain → AI reviews → You retrieve later
-```
+## Core Learning Approach
 
-AI never writes the solution for you. It asks questions, gives small hints, and tests your understanding. The harder you think, the more you learn.
+| Shared concept | Purpose |
+| --- | --- |
+| Independent capability | Help you solve similar problems yourself. |
+| Attempt before assistance | Start with your own effort and current understanding. |
+| Prediction before explanation | Commit to an expected result before seeing the answer. |
+| Hypothesis-driven reasoning | State what you think is happening and why. |
+| One focused question at a time | Keep the interaction manageable and interactive. |
+| Smallest useful intervention | Give only enough help to move you forward. |
+| Learner-written implementation | Let you write the solution during learning sessions. |
+| Verification through evidence | Check understanding through tests, experiments, documentation, or source. |
+| Teach-back | Have you explain why your solution works. |
+| Adaptive difficulty | Increase challenge after success; revisit prerequisites when needed. |
+| Learning versus shipping | Switch to direct implementation when explicitly requested. |
 
----
+## Learning Cycle
 
-## Quick Start
+**Attempt → Predict → Hint → Implement → Test → Explain → Review → Retrieve**
 
-1. **Clone or copy this repo** into your project (or use it as a template).
-2. **Open GitHub Copilot Chat** in your editor.
-3. **Type a slash command** like `/hint`, `/debug`, `/explain`, etc.
-4. **Answer the questions** Copilot asks you. Don't skip them — that's where the learning happens.
-5. **Write the code yourself.** AI will guide, not write.
+Success means being able to explain the reasoning, predict behavior, debug similar problems, and apply the ideas independently.
 
-> **Important!:** Disable Copilot inline completions while learning. Use Chat mode only.
+## All 12 Workflows
 
----
+| Workflow | Shared purpose |
+| --- | --- |
+| `/learn` | Identify the learning task and choose a suitable workflow. |
+| `/hint` | Provide incremental help after an attempt and prediction. |
+| `/debug` | Diagnose problems through hypotheses and small experiments. |
+| `/autopsy` | Reflect on meaningful fixed bugs and identify prevention habits. |
+| `/read` | Reconstruct unfamiliar code’s behavior through concrete questions. |
+| `/code-review` | Review your code educationally, starting with your own assessment. |
+| `/test` | Derive contracts, boundaries, failure cases, and tests before implementation. |
+| `/explore` | Compare approaches and challenge designs with additional constraints. |
+| `/arch` | Develop a design through a focused architecture interview. |
+| `/explain` | Test understanding through your explanation, examples, and counterexamples. |
+| `/retrieve` | Revisit past material through active recall and application. |
+| `/api` | Investigate an API’s purpose, assumptions, alternatives, tradeoffs, and failures. |
 
-## The 12 Prompts
+In Earendel, these names are conversational aliases, not registered ChatGPT slash commands. Natural-language requests also work. `/explain` specifically refers to teach-back; an ordinary request for an explanation is interpreted in context.
 
-Each prompt is a workflow. Invoke it with a `/command` in Copilot Chat.
+## Seven-Level Hint Ladder
 
-### `/learn`
-**The entry point.** Tell it what you want to learn, and it picks the right workflow for you. Use this when you're not sure which prompt to use.
+| Level | Shared intervention |
+| --- | --- |
+| 0 | A guiding question |
+| 1 | A direction or area to inspect |
+| 2 | A conceptual hint |
+| 3 | A strategy |
+| 4 | Abstract pseudocode |
+| 5 | A small partial implementation |
+| 6 | A full implementation, only when explicitly requested |
 
-**Use when:** You're starting a session and don't know where to begin.
+Both start with minimal help, provide one hint at a time, and ask before advancing. They do not jump more than one level without explicit permission. An explicit **“no code”** instruction takes precedence.
 
----
+## Four Reusable Behaviors
 
-### `/hint`
-**Your main problem-solving tool.** First, you predict what should happen. Then, AI gives you the smallest hint needed — one level at a time, from a question all the way up to full code (only if you ask for it).
+| Behavior | Shared principles |
+| --- | --- |
+| Debugging | Separate expected results, actual results, hypotheses, and evidence; choose the smallest useful experiment. |
+| Examination | Test prediction, explanation, application, and transfer; correct the smallest misconception first. |
+| Code review | Prioritize correctness and security; distinguish defects from preferences; verify findings. |
+| Retrieval | Mix recent and older material; favor reasoning over definitions; adapt to demonstrated understanding. |
 
-**Use when:** You're stuck on a problem, bug, or concept and want incremental help without being handed the answer.
+## Learning Records
 
----
+The original [learning directory](https://github.com/i-am-manware/Manware-s-AI-Learning-Toolkit/tree/copilot/learning) contains four templates. The adaptation combines these templates in `references/logs.md`.
 
-### `/debug`
-**Bug diagnosis through hypothesis testing.** AI asks what you expected, what happened, and what you think is wrong — then guides you to find the bug yourself.
+| Record | Shared information |
+| --- | --- |
+| Concepts | Your explanation, corrected understanding, an example, and related concepts. |
+| Mistakes | The problem, mistake, original model, corrected model, category, prevention, and follow-up exercise. |
+| Questions | An unresolved question, context, current hypothesis, evidence to check, and status. |
+| Review | A recall prompt, last review date, confidence, and next review or exercise. |
 
-**Use when:** Your code doesn't work and you want to understand *why*, not just get a fix.
+Both preserve original reasoning, use dates, and record meaningful insights or recurring patterns rather than every interaction. Neither should invent previous learning history.
 
----
+The bundled templates are not populated progress records. In Earendel, saving learning history requires an available storage destination and user authorization. Installing the skill does not create automatic reminders or guarantee cross-chat recall.
 
-### `/autopsy`
-**Post-mortem after fixing a bug.** You fill in what happened, what you believed, what actually happened, and what you missed. AI classifies the bug and suggests prevention.
+## File Mapping
 
-**Use when:** You just fixed a non-trivial bug and want to learn from it so it doesn't happen again.
+| Original toolkit | Earendel |
+| --- | --- |
+| `.github/copilot-instructions.md` | Core teaching rules and mode boundaries in `SKILL.md` |
+| `.github/prompts/*.prompt.md` | Twelve workflow files under `references/`, routed from `SKILL.md` |
+| `.github/skills/*/SKILL.md` | Four reusable behaviors combined in `references/behaviors.md` |
+| `.github/instructions/learning-files.instructions.md` | Learning-record guidance in `references/logs.md` |
+| `learning/concepts.md` | Concepts template in `references/logs.md` |
+| `learning/mistakes.md` | Mistakes template in `references/logs.md` |
+| `learning/questions.md` | Questions template in `references/logs.md` |
+| `learning/review.md` | Review template in `references/logs.md` |
 
----
+The adaptation also includes `agents/openai.yaml` for skill metadata and `references/source.md` for provenance.
 
-### `/read`
-**Understand unfamiliar code.** AI asks you concrete questions one at a time: "What does this input produce?" "What happens after iteration 3?" You reconstruct the mental model yourself.
+## Using Earendel
 
-**Use when:** You're reading someone else's code, old code, framework internals, or library source.
+Invoke the installed skill with a request such as:
 
----
+> Use $earendel to teach me Python. Ask one question at a time and do not give me code.
 
-### `/code-review`
-**Educational code review.** Before AI reviews your code, you identify the weakest part yourself. Then AI labels issues by severity and asks discovery questions instead of rewriting your code.
+The skill is available globally as a reusable skill. It does not impose tutoring on every unrelated conversation.
 
-**Use when:** You've written something and want a senior-developer-style review that teaches you.
+To switch from learning to direct implementation, explicitly say **“ship this”**, **“implement it”**, or **“just give me the code.”** Resume tutoring when you want to continue learning.
 
----
+## Source and Scope
 
-### `/test`
-**Design tests before implementing.** You state the contract, identify the smallest passing/failing inputs, and derive test cases. AI exposes ambiguities in your spec.
+- **Upstream:** [i-am-manware/Manware-s-AI-Learning-Toolkit](https://github.com/i-am-manware/Manware-s-AI-Learning-Toolkit)
+- **Source branch:** `copilot`
+- **Source commit:** `3eb77d0ec8b4835b31e5e848559153daf5f4af59`
+- **Adaptation and branding:** Noah Richardson — Earendel
+- **Adaptation date:** October 14, 2026
+- **Scope:** This comparison covers Manware and the ChatGPT adaptation. Cognia is not included in the installed adaptation described here.
 
-**Use when:** You're about to implement a feature and want to think through edge cases first.
-
----
-
-### `/explore`
-**Explore design space.** You defend your current solution, AI offers conceptually different alternatives, then introduces constraints one at a time to stress-test your design.
-
-**Use when:** You have a working solution and want to understand tradeoffs, or when you want to practice handling real-world constraints like scale, concurrency, or failure.
-
----
-
-### `/arch`
-**Architecture interview.** AI asks one focused question at a time about requirements, state, interfaces, failure modes, etc. You sketch the design; AI challenges your assumptions.
-
-**Use when:** You're designing a non-trivial feature and want to think through it before coding.
-
----
-
-### `/explain`
-**Teach-back test.** You explain a concept in your own words, as if teaching a beginner. AI probes for gaps, vague terms, and contradictions — then gives a concise assessment.
-
-**Use when:** You think you understand something and want to verify it.
-
----
-
-### `/retrieve`
-**Spaced retrieval practice.** AI reads your learning logs (if they exist) and asks you a short mix of prediction, debugging, and application questions from past material.
-
-**Use when:** You're starting a coding session and want a quick warm-up to reinforce what you've learned.
-
----
-
-### `/api`
-**Learn an API deeply.** AI walks you through 7 questions: what problem it solves, what assumptions it makes, what alternatives exist, when *not* to use it, and its failure modes. Then it points you to official docs.
-
-**Use when:** You encounter a new library, framework, or API and want real understanding, not just syntax.
-
----
-
-## The 4 Skills
-
-Skills are reusable behaviors that work across multiple prompts. You don't invoke them directly, they shape how AI responds when relevant.
-
-| Skill | What it does |
-|---|---|
-| **debugging** | Separates expected vs actual behavior, requires a hypothesis before suggesting causes, picks the smallest next experiment. |
-| **examination** | Tests understanding through prediction, explanation, application, and transfer. Corrects the smallest misconception first. |
-| **code-review** | Prioritizes correctness over style, asks discovery questions before rewrites, distinguishes bugs from preferences. |
-| **retrieval** | Mixes recent and older material, prefers prediction over definitions, adapts difficulty to your performance. |
-
----
-
-## Learning Logs (Optional)
-
-A lightweight folder for recording meaningful learning events. You don't need to update these after every interaction, but only when something sticks, or at the end of the day.
-
-```
-learning/
-├── mistakes.md    # Bugs, misconceptions, recurring patterns
-├── concepts.md    # Durable understanding worth keeping
-├── questions.md   # Unresolved questions to revisit
-└── review.md      # Retrieval prompts and review metadata
-```
-
-The `/retrieve` prompt reads these files to personalize your review sessions.
-
----
-
-## Adaptive Behavior
-
-The toolkit adapts to you:
-
-- **If you're solving things easily:** AI asks deeper "why" questions, introduces harder constraints, and reduces unnecessary prompting.
-- **If you're struggling:** AI lowers the hint level, revisits prerequisites, and creates targeted practice — without just giving you the answer.
-
----
-
-## Shipping Mode
-
-This toolkit is for learning. When you need to ship:
-
-> Just say **"ship this"** or ask for a direct implementation.
-
-AI will switch to normal engineering mode. The learning rules only apply when you invoke a learning prompt.
-
----
-
-## How It's Organized
-
-```
-.github/
-├── copilot-instructions.md    # Global learning philosophy
-├── prompts/                   # 12 user-facing workflows (slash commands)
-├── instructions/              # Rules for learning log files
-└── skills/                    # 4 reusable AI behaviors
-learning/                      # Optional learning logs
-```
-
----
-
-## Requirements
-
-- **GitHub Copilot** (Chat mode) in your editor
-- No other dependencies, scripts, or setup needed
-
----
-
-## Limitations
-
-- **Skills** require a Copilot plan that supports custom skills. Prompts work everywhere.
-- **Learning logs** are optional and manual. The toolkit works fine without them.
-- **Inline completions** must be disabled manually in your editor settings.
-- This is a prompt-based toolkit, not an app. It works through Copilot Chat conversations.
-
----
-
-## Philosophy
-
-> Make AI reduce the friction around learning programming **without reducing the amount of thinking the learner has to do.**
-
-If you're not thinking, you're not learning.
+No license file was present in the inspected source tree. This README does not assert a new license for upstream material.
