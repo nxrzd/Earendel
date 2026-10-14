@@ -148,7 +148,7 @@ The workflow lives in `references/stoic.md`. It is an Earendel addition, separat
 - **Upstream:** [i-am-manware/Manware-s-AI-Learning-Toolkit](https://github.com/i-am-manware/Manware-s-AI-Learning-Toolkit)
 - **Source branch:** `copilot`
 - **Source commit:** `3eb77d0ec8b4835b31e5e848559153daf5f4af59`
-- **Adaptation and branding:** Noah Richardson — Earendel
+- **Adaptation and branding:** https://github.com/nxrzd — Earendel
 - **Adaptation date:** October 14, 2026
 - **Scope:** This comparison covers Manware and the ChatGPT adaptation. Cognia is not included in the installed adaptation described here.
 
