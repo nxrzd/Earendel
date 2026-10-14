@@ -2,7 +2,7 @@
 
 **Learn by predicting, trying, and explaining.**
 
-Earendel is my branded ChatGPT adaptation of [Manware’s AI Learning Toolkit](https://github.com/i-am-manware/Manware-s-AI-Learning-Toolkit/tree/copilot). It guides programming practice through questions, incremental hints, experiments, and teach-back.
+Named after the furthest photographed star away from humanity, Earendel *(WHL0137-LS)* is my branded ChatGPT adaptation of [Manware’s AI Learning Toolkit](https://github.com/i-am-manware/Manware-s-AI-Learning-Toolkit/tree/copilot). It guides programming practice through questions, incremental hints, experiments, and teach-back.
 
 ## Fork Attribution
 
@@ -34,7 +34,7 @@ The comparison below documents what Earendel retains from its upstream source.
 
 Success means being able to explain the reasoning, predict behavior, debug similar problems, and apply the ideas independently.
 
-## All 12 Workflows
+## The 12 Inherited Workflows
 
 | Workflow | Shared purpose |
 | --- | --- |
@@ -112,9 +112,36 @@ Invoke the installed skill with a request such as:
 
 > Use $earendel to teach me Python. Ask one question at a time and do not give me code.
 
+You can also start a message with the conversational shortcut `-*`:
+
+> -* teach me Python without giving me code.
+
+Use `-* /debug` to select a workflow. Send `-*` alone to resume a visible learning task, or choose a topic if none is established. Put a space between the marker and your request. Quoted markers and code examples do not activate the skill. This alias is handled by the skill instructions, not registered as an application command; `$earendel` remains the explicit named invocation.
+
 The skill is available globally as a reusable skill. It does not impose tutoring on every unrelated conversation.
 
 To switch from learning to direct implementation, explicitly say **“ship this”**, **“implement it”**, or **“just give me the code.”** Resume tutoring when you want to continue learning.
+
+## Stoic Learning — Earendel Extension
+
+Start a message with `/*s` to enter Stoic learning mode:
+
+> /*s help me handle frustration when learning something difficult.
+
+Send `/*s` alone to resume a visible Stoic session or choose a topic. You can also use `$earendel stoic` or `-* stoic`. These are conversational triggers; quoted text and source-code comments do not activate them.
+
+This mode teaches one idea or practical situation at a time:
+
+1. Describe what happened and distinguish observations from interpretations.
+2. Examine the judgment attached to the event.
+3. Identify your available choices and the outcomes you cannot guarantee.
+4. Consider wisdom, courage, justice, or moderation.
+5. Choose a small practical action.
+6. Reflect on the result and revisit the idea through active recall.
+
+The companion asks one question at a time. It treats emotions with care and supports constructive action, boundaries, and responsibility. Stoicism is not framed as emotional suppression or passive acceptance of mistreatment. Historical quotations and specific textual claims require verified sources; paraphrases are identified as such.
+
+The workflow lives in `references/stoic.md`. It is an Earendel addition, separate from the 12 workflows inherited from Manware. Learning logs remain optional and require authorization to save.
 
 ## Source and Scope
 
