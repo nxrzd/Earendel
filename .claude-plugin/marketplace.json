@@ -1,0 +1,15 @@
+{
+  "name": "nxrzd",
+  "description": "Noah Richardson's Claude Code plugins",
+  "owner": {
+    "name": "Noah Richardson",
+    "url": "https://github.com/nxrzd"
+  },
+  "plugins": [
+    {
+      "name": "earendel",
+      "source": "./plugins/earendel",
+      "description": "Learn to code by predicting, trying, and explaining: hint ladder, debugging tutor, teach-back, code review, retrieval practice, and a Stoic learning mode."
+    }
+  ]
+}

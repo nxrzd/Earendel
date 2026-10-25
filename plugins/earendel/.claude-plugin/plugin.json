@@ -1,0 +1,12 @@
+{
+  "name": "earendel",
+  "version": "1.0.0",
+  "description": "Learn to code by predicting, trying, and explaining. Adapted from Manware's AI Learning Toolkit.",
+  "author": {
+    "name": "Noah Richardson",
+    "url": "https://github.com/nxrzd"
+  },
+  "homepage": "https://github.com/nxrzd/earendel",
+  "repository": "https://github.com/nxrzd/earendel",
+  "keywords": ["learning", "tutor", "education", "socratic", "hints"]
+}
