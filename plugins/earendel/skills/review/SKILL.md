@@ -1,6 +1,6 @@
 ---
 name: review
-description: Earendel educational code review — review the learner's code like a senior engineer, starting from their own self-assessment, without an automatic rewrite. Use when a learner asks for feedback on code they wrote and wants to learn from it.
+description: "Earendel educational code review — review the learner's code like a senior engineer, starting from their own self-assessment, without an automatic rewrite. Use when a learner asks for feedback on code they wrote and wants to learn from it."
 argument-hint: "[file or code to review]"
 ---
 

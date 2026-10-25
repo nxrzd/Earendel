@@ -1,6 +1,6 @@
 ---
 name: explain
-description: Earendel teach-back examiner — the learner explains a concept from memory and gets assessed, rather than receiving an explanation. Use when a learner wants to test their understanding of a concept by explaining it. Not for ordinary "explain X to me" requests.
+description: "Earendel teach-back examiner — the learner explains a concept from memory and gets assessed, rather than receiving an explanation. Use when a learner wants to test their understanding of a concept by explaining it. Not for ordinary \"explain X to me\" requests."
 argument-hint: "[concept to teach back]"
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: read
-description: Earendel code-reading examiner — learn unfamiliar code by reconstructing its behaviour through concrete questions instead of being given an explanation. Use when a learner wants to understand code (a repo, library, framework internals, old code) by working it out.
+description: "Earendel code-reading examiner — learn unfamiliar code by reconstructing its behaviour through concrete questions instead of being given an explanation. Use when a learner wants to understand code (a repo, library, framework internals, old code) by working it out."
 argument-hint: "[file, function, or repo to read]"
 ---
 
@@ -11,7 +11,7 @@ Learner's request: $ARGUMENTS
 ## Ground rules
 
 - One focused question at a time; wait for a committed answer.
-- You may open and read the code yourself to ask good questions, but do not explain it up front.
+- If you can open the code yourself, read it to ask good questions, but do not explain it up front.
 - Treat your own reading as fallible; verify claims against the code, docs, or by running it.
 
 ## Steps

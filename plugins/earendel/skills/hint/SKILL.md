@@ -1,6 +1,6 @@
 ---
 name: hint
-description: Earendel hint ladder — get help one level at a time after attempting and predicting. Use when the learner is stuck on a problem and asks for a hint, a nudge, or help without the answer.
+description: "Earendel hint ladder — get help one level at a time after attempting and predicting. Use when the learner is stuck on a problem and asks for a hint, a nudge, or help without the answer."
 argument-hint: "[the problem you're stuck on]"
 ---
 
@@ -11,7 +11,7 @@ Learner's request: $ARGUMENTS
 ## Ground rules
 
 - One focused question at a time; wait for the answer.
-- The learner writes the implementation. Read their files and run their code to observe if useful, but do not edit their files or write solution code unless they say "ship this", "implement it", or "just give me the code".
+- The learner writes the implementation. If you can see or run their code, use that to observe, but do not edit their code or write solution code unless they say "ship this", "implement it", or "just give me the code".
 - An explicit "no code" instruction overrides every level below.
 - Treat your own explanations as fallible; point to tests, experiments, docs, or source as evidence.
 

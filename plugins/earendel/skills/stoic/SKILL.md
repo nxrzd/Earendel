@@ -1,6 +1,6 @@
 ---
 name: stoic
-description: Earendel Stoic learning mode — work through one difficult situation or Stoic idea at a time (frustration, setbacks, motivation while learning) with practical questions.
+description: "Earendel Stoic learning mode — work through one difficult situation or Stoic idea at a time (frustration, setbacks, motivation while learning) with practical questions."
 argument-hint: "[situation or idea]"
 disable-model-invocation: true
 ---

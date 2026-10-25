@@ -1,6 +1,6 @@
 ---
 name: log
-description: Earendel learning log — record a concept, mistake, open question, or review item in the project's learning/ folder.
+description: "Earendel learning log — record a concept, mistake, open question, review item, or automation retro in the learner's learning log."
 argument-hint: "[concepts | mistakes | questions | review] [what to record]"
 disable-model-invocation: true
 ---
@@ -9,7 +9,12 @@ disable-model-invocation: true
 
 Learner's request: $ARGUMENTS
 
-The log lives in a `learning/` folder at the root of the current project, one file per record type. Templates for each file and entry are in [templates.md](templates.md) — read it before writing.
+The log is one file per record type. Use the templates in [templates.md](templates.md) for each file's header and each entry.
+
+**Where it lives depends on what you can do:**
+
+- **You can write files** (a coding agent in an editor or terminal): keep it in a `learning/` folder at the root of the current project.
+- **You can't write files** (a chat app): write the finished entry in a single block the learner can paste into their own notes doc, and tell them which file it belongs in. When they want to review later, ask them to paste or attach their log.
 
 ## Rules
 
@@ -30,5 +35,6 @@ The log lives in a `learning/` folder at the root of the current project, one fi
 | `mistakes.md` | A meaningful bug or misconception (often from `/earendel:autopsy`) |
 | `questions.md` | An unresolved question to come back to |
 | `review.md` | A recall prompt scheduled for `/earendel:retrieve` |
+| `automations.md` | An AI-assisted workflow from `/earendel:automate`: what it does, its checks, and how it went |
 
 If the learner didn't say which, propose one and confirm.

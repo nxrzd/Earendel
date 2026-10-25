@@ -1,6 +1,6 @@
 ---
 name: api
-description: Earendel API discovery — learn an API by investigating its purpose, assumptions, tradeoffs, and failure modes before its syntax. Use when a learner wants to understand a library, framework, or API rather than get a usage recipe.
+description: "Earendel API discovery — learn an API by investigating its purpose, assumptions, tradeoffs, and failure modes before its syntax. Use when a learner wants to understand a library, framework, or API rather than get a usage recipe."
 argument-hint: "[API, library, or function]"
 ---
 

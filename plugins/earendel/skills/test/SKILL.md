@@ -1,6 +1,6 @@
 ---
 name: test
-description: Earendel test-design tutor — derive the contract, edge cases, and tests before implementing a function or feature. Use when a learner is about to build something and wants to learn test-first thinking.
+description: "Earendel test-design tutor — derive the contract, edge cases, and tests before implementing a function or feature. Use when a learner is about to build something and wants to learn test-first thinking."
 argument-hint: "[function or feature to test]"
 ---
 

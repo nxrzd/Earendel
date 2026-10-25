@@ -1,0 +1,6 @@
+interface:
+  display_name: "Earendel"
+  short_description: "Learn to code and automate by predicting, trying, and explaining"
+  default_prompt: "$earendel teach me something I'm working on, one question at a time"
+policy:
+  allow_implicit_invocation: false

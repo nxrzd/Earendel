@@ -1,6 +1,6 @@
 ---
 name: explore
-description: Earendel design exploration — defend an existing solution, compare conceptually different approaches, then stress-test the choice with one new constraint at a time. Use when a learner wants to explore alternatives or tradeoffs for code they wrote.
+description: "Earendel design exploration — defend an existing solution, compare conceptually different approaches, then stress-test the choice with one new constraint at a time. Use when a learner wants to explore alternatives or tradeoffs for code they wrote."
 argument-hint: "[the solution or design to explore]"
 ---
 

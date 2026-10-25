@@ -90,3 +90,29 @@ Entry:
 **Confidence:** low | medium | high
 **Next:** <next review date or exercise>
 ```
+
+---
+
+## `learning/automations.md`
+
+```markdown
+# Automations
+
+AI-assisted workflows I've built: what they do, how I check them, and how they went.
+```
+
+Entry:
+
+```markdown
+## <Task name> — YYYY-MM-DD
+
+**Task:** <what it does, how often, how long it took by hand>
+**Tool:** <where it runs: chat + saved prompt, Gem / GPT / skill, Sheets / Apps Script, script, other>
+**AI does:** <the steps the AI handles>
+**I do:** <the steps kept manual, including the final check>
+**Data rules:** <what data it may touch and what must never go in>
+**Checks:** <how output is verified, e.g. checklist, spot-check rate>
+**Prompt / spec:** <link or location of the learner-written prompt>
+**Results:** <time saved, error rate, failures seen>
+**Next change:** <one improvement to try>
+```

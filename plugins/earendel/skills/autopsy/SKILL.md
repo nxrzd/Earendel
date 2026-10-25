@@ -1,6 +1,6 @@
 ---
 name: autopsy
-description: Earendel bug autopsy — turn a meaningful, already-fixed bug into a short diagnosis and a prevention habit. Use after a learner fixes a non-trivial bug and wants to learn from it.
+description: "Earendel bug autopsy — turn a meaningful, already-fixed bug into a short diagnosis and a prevention habit. Use after a learner fixes a non-trivial bug and wants to learn from it."
 argument-hint: "[the bug you just fixed]"
 ---
 

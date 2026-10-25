@@ -9,7 +9,7 @@
     {
       "name": "earendel",
       "source": "./plugins/earendel",
-      "description": "Learn to code by predicting, trying, and explaining: hint ladder, debugging tutor, teach-back, code review, retrieval practice, and a Stoic learning mode."
+      "description": "Learn to code and to build AI-assisted workflows by predicting, trying, and explaining: hint ladder, debugging tutor, teach-back, code review, workflow coaching, retrieval practice, and a Stoic learning mode."
     }
   ]
 }

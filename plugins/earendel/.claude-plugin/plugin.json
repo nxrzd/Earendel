@@ -1,12 +1,19 @@
 {
   "name": "earendel",
-  "version": "1.0.0",
-  "description": "Learn to code by predicting, trying, and explaining. Adapted from Manware's AI Learning Toolkit.",
+  "version": "1.1.0",
+  "description": "Learn to code and to build AI-assisted workflows by predicting, trying, and explaining: hint ladder, debugging tutor, teach-back, code review, workflow coaching, retrieval practice, and a Stoic learning mode.",
   "author": {
     "name": "Noah Richardson",
     "url": "https://github.com/nxrzd"
   },
   "homepage": "https://github.com/nxrzd/earendel",
   "repository": "https://github.com/nxrzd/earendel",
-  "keywords": ["learning", "tutor", "education", "socratic", "hints"]
+  "keywords": [
+    "learning",
+    "tutor",
+    "education",
+    "socratic",
+    "hints",
+    "automation"
+  ]
 }

@@ -1,6 +1,6 @@
 ---
 name: retrieve
-description: Earendel retrieval practice — a short, varied active-recall session drawn from the learner's learning log. Use when a learner wants to review or practise what they learned before.
+description: "Earendel retrieval practice — a short, varied active-recall session drawn from the learner's learning log. Use when a learner wants to review or practise what they learned before."
 argument-hint: "[optional topic to focus on]"
 ---
 
@@ -15,7 +15,7 @@ Learner's request: $ARGUMENTS
 
 ## Source material
 
-Read the learning log in the current project's `learning/` folder if it exists (`concepts.md`, `mistakes.md`, `questions.md`, `review.md`). If there's no log, say so and ask the learner which topics they want to review — or offer to start one with `/earendel:log`.
+If you can read files, read the learning log in the current project's `learning/` folder if it exists (`concepts.md`, `mistakes.md`, `questions.md`, `review.md`, `automations.md`). In a chat app, ask the learner to paste or attach their log. If there's no log, say so and ask which topics they want to review — or offer to start one with `/earendel:log`.
 
 ## Steps
 

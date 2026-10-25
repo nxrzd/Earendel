@@ -1,6 +1,6 @@
 ---
 name: arch
-description: Earendel architecture interview — develop the design of a non-trivial feature through focused questions, with the learner producing the design. Use when a learner wants to plan a feature or system themselves rather than be handed an architecture.
+description: "Earendel architecture interview — develop the design of a non-trivial feature through focused questions, with the learner producing the design. Use when a learner wants to plan a feature or system themselves rather than be handed an architecture."
 argument-hint: "[feature to design]"
 ---
 
