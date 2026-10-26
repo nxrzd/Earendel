@@ -2,15 +2,119 @@
 
 **Learn by predicting, trying, and explaining.**
 
-Named after the furthest photographed star away from humanity, Earendel *(WHL0137-LS)* is my branded ChatGPT adaptation of [Manware’s AI Learning Toolkit](https://github.com/i-am-manware/Manware-s-AI-Learning-Toolkit/tree/copilot). It guides programming practice through questions, incremental hints, experiments, and teach-back.
+Named after the furthest photographed star away from humanity, Earendel *(WHL0137-LS)* is my branded adaptation of [Manware’s AI Learning Toolkit](https://github.com/i-am-manware/Manware-s-AI-Learning-Toolkit/tree/copilot). It guides programming practice — and learning to build AI-assisted workflows for everyday tasks — through questions, incremental hints, experiments, and teach-back.
 
-## Fork Attribution
+It runs in **Claude, ChatGPT/Codex, and Gemini**, built from one shared source.
 
-Earendel is a derivative adaptation of the original toolkit by **i-am-manware**. The original author receives credit for the teaching workflows, hint ladder, reusable learning behaviors, and log templates. This edition adds ChatGPT skill routing, optional storage guidance, mode boundaries, and the Earendel branding.
+## Pick your tool
 
-“Fork” describes the project’s derivation here: a GitHub-hosted fork has not been created. Earendel is independently branded and is not an official upstream release. Previously named `manware-learning-chatgpt` and briefly MoM-z14, it now uses the skill identifier `earendel`.
+| Where you're working | Install | Start a session |
+| --- | --- | --- |
+| **Claude Code** (VS Code extension or terminal) | [Claude Code plugin](#claude-code) | `/earendel:learn` |
+| **Claude** app (web, desktop, mobile) | [Upload the skill](#claude-app) | `earendel hint: …` |
+| **Codex** (VS Code extension or CLI) and the **ChatGPT desktop app** | [Copy the skill folder](#codex-and-chatgpt-desktop) | `$earendel hint …` |
+| **Gemini CLI** and **Gemini Code Assist** in VS Code | [Gemini extension](#gemini-cli-and-gemini-code-assist) | `/earendel:learn` |
+| **Gemini** app / Google Workspace | [Make a Gem](#gemini-app-gem) | `hint: …` |
+| **ChatGPT** on the web (Custom GPT or Project) | [Paste the instructions](#chatgpt-web-custom-gpt-or-project) | `hint: …` |
 
-The comparison below documents what Earendel retains from its upstream source.
+Tutoring only starts when you ask for it, so these don't change how the tool behaves for normal work. Say **“ship this”**, **“just build it”**, or **“just give me the code”** to get a direct answer mid-session.
+
+> **Using it at work:** follow your organisation's AI and privacy policy. Admins can block extensions, Gems, or custom skills, and some data (personal info, student or customer records, credentials) may not be allowed in AI tools at all. The `automate` workflow walks through this check before you share any real data.
+
+### Claude Code
+
+In the Claude Code panel in VS Code (or a terminal session):
+
+```text
+/plugin marketplace add nxrzd/earendel
+/plugin install earendel@nxrzd
+/reload-plugins
+```
+
+Type `/earendel:` to see the commands. Anything after a command is passed in as your request: `/earendel:debug my loop never ends`.
+
+### Claude app
+
+1. Download [`dist/earendel-skill.zip`](dist/earendel-skill.zip).
+2. In Claude, go to **Customize → Skills**, upload the zip, and turn it on.
+3. Start a message with `earendel` or a workflow name, e.g. `earendel automate: my weekly status report`.
+
+Claude can't save files in a chat, so `log` gives you an entry to paste into your own notes instead.
+
+### Codex and ChatGPT desktop
+
+Codex loads skills from `~/.agents/skills`. Copy the folder there:
+
+```bash
+git clone https://github.com/nxrzd/earendel
+mkdir -p ~/.agents/skills && cp -r earendel/skills/earendel ~/.agents/skills/
+```
+
+Restart Codex, then type `$earendel` (or `/skills` to pick it). Earendel is set to explicit invocation only, so Codex won't start tutoring on its own. Standalone skills also show up under **Skills** in the ChatGPT desktop app. To use it in a single repo instead, copy it to `.agents/skills/` in that repo.
+
+### Gemini CLI and Gemini Code Assist
+
+```bash
+gemini extensions install https://github.com/nxrzd/earendel
+```
+
+This adds the `/earendel:<name>` commands and the Earendel skill. Gemini asks your permission before it activates a skill. Run `/skills` to check that it loaded.
+
+Gemini Code Assist's agent mode in VS Code is powered by Gemini CLI. If the `/earendel:` commands don't show up there, ask for a workflow by name (“use earendel hint”) so the skill can load. As a fallback, copy `skills/earendel` to `~/.gemini/skills/` (or `~/.agents/skills/`, which Gemini CLI and Codex share).
+
+The extension deliberately has no `GEMINI.md`, because that would load tutoring rules into every Gemini session.
+
+### Gemini app (Gem)
+
+1. In Gemini, open **Gems → New Gem** and name it Earendel.
+2. Paste the contents of [`chat/earendel-instructions.md`](chat/earendel-instructions.md) into **Instructions**.
+3. Add [`chat/earendel-workflows.md`](chat/earendel-workflows.md) as a **Knowledge** file.
+4. Start a chat with the Gem and lead with a workflow name: `automate: summarising the helpdesk queue for my manager`.
+
+### ChatGPT web (Custom GPT or Project)
+
+On the web, ChatGPT only runs skills bundled in plugins, so use the instructions here instead:
+
+- **Custom GPT:** paste `chat/earendel-instructions.md` into **Instructions** (it fits the 8,000-character limit) and upload `chat/earendel-workflows.md` under **Knowledge**.
+- **Project:** paste the instructions into the project's instructions and add the workflows file to its files.
+
+The same two files also work in a **Claude Project**.
+
+## Workflows
+
+| Workflow | Purpose |
+| --- | --- |
+| `learn` | Identify the learning task and choose a suitable workflow. |
+| `hint` | Provide incremental help after an attempt and prediction. |
+| `debug` | Diagnose problems through hypotheses and small experiments. |
+| `autopsy` | Reflect on meaningful fixed bugs and identify prevention habits. |
+| `read` | Reconstruct unfamiliar code’s behavior through concrete questions. |
+| `review` | Review your code educationally, starting with your own assessment. |
+| `test` | Derive contracts, boundaries, failure cases, and tests before implementation. |
+| `explore` | Compare approaches and challenge designs with additional constraints. |
+| `arch` | Develop a design through a focused architecture interview. |
+| `explain` | Test understanding through your explanation, examples, and counterexamples. |
+| `retrieve` | Revisit past material through active recall and application. |
+| `api` | Investigate an API’s purpose, assumptions, alternatives, tradeoffs, and failures. |
+| `automate` | Learn to automate a recurring task with AI: map it, split it, check data rules, write and test your own prompt, build a verification step. *(Earendel addition)* |
+| `log` | Record a concept, mistake, question, review item, or automation retro. *(Earendel addition)* |
+| `stoic` | Stoic learning mode for frustration and setbacks. *(Earendel addition)* |
+
+The first twelve are inherited from Manware. `explain` is teach-back; an ordinary “explain X” request is answered normally.
+
+## Workflow coaching (`automate`)
+
+The `automate` workflow teaches you to build AI-assisted workflows for mundane tasks — not by building them for you, but by coaching you through it:
+
+1. **Pick the task** and describe how you do it today.
+2. **Split the steps** into rules (formula/script), judgement (AI drafts, you check), and keep-human.
+3. **Check the data** against your organisation's policy before anything real goes in.
+4. **Write the spec and prompt yourself**, then get questions that expose the gaps.
+5. **Test on 3–5 cases**, predicting each output first.
+6. **Iterate** one change at a time.
+7. **Build the check** — how output is verified before anyone acts on it.
+8. **Choose where it lives** — saved prompt, Gem/GPT/skill, Sheets or Apps Script, an editor agent, or a script.
+9. **Run it for a week** and do a short retro.
 
 ## Core Learning Approach
 
@@ -22,40 +126,17 @@ The comparison below documents what Earendel retains from its upstream source.
 | Hypothesis-driven reasoning | State what you think is happening and why. |
 | One focused question at a time | Keep the interaction manageable and interactive. |
 | Smallest useful intervention | Give only enough help to move you forward. |
-| Learner-written implementation | Let you write the solution during learning sessions. |
+| Learner-written implementation | Let you write the solution — code, prompts, formulas — during learning sessions. |
 | Verification through evidence | Check understanding through tests, experiments, documentation, or source. |
 | Teach-back | Have you explain why your solution works. |
 | Adaptive difficulty | Increase challenge after success; revisit prerequisites when needed. |
 | Learning versus shipping | Switch to direct implementation when explicitly requested. |
 
-## Learning Cycle
-
-**Attempt → Predict → Hint → Implement → Test → Explain → Review → Retrieve**
-
-Success means being able to explain the reasoning, predict behavior, debug similar problems, and apply the ideas independently.
-
-## The 12 Inherited Workflows
-
-| Workflow | Shared purpose |
-| --- | --- |
-| `/learn` | Identify the learning task and choose a suitable workflow. |
-| `/hint` | Provide incremental help after an attempt and prediction. |
-| `/debug` | Diagnose problems through hypotheses and small experiments. |
-| `/autopsy` | Reflect on meaningful fixed bugs and identify prevention habits. |
-| `/read` | Reconstruct unfamiliar code’s behavior through concrete questions. |
-| `/code-review` | Review your code educationally, starting with your own assessment. |
-| `/test` | Derive contracts, boundaries, failure cases, and tests before implementation. |
-| `/explore` | Compare approaches and challenge designs with additional constraints. |
-| `/arch` | Develop a design through a focused architecture interview. |
-| `/explain` | Test understanding through your explanation, examples, and counterexamples. |
-| `/retrieve` | Revisit past material through active recall and application. |
-| `/api` | Investigate an API’s purpose, assumptions, alternatives, tradeoffs, and failures. |
-
-In Earendel, these names are conversational aliases, not registered ChatGPT slash commands. Natural-language requests also work. `/explain` specifically refers to teach-back; an ordinary request for an explanation is interpreted in context.
+**Cycle:** Attempt → Predict → Hint → Implement → Test → Explain → Review → Retrieve.
 
 ## Seven-Level Hint Ladder
 
-| Level | Shared intervention |
+| Level | Intervention |
 | --- | --- |
 | 0 | A guiding question |
 | 1 | A direction or area to inspect |
@@ -65,70 +146,42 @@ In Earendel, these names are conversational aliases, not registered ChatGPT slas
 | 5 | A small partial implementation |
 | 6 | A full implementation, only when explicitly requested |
 
-Both start with minimal help, provide one hint at a time, and ask before advancing. They do not jump more than one level without explicit permission. An explicit **“no code”** instruction takes precedence.
-
-## Four Reusable Behaviors
-
-| Behavior | Shared principles |
-| --- | --- |
-| Debugging | Separate expected results, actual results, hypotheses, and evidence; choose the smallest useful experiment. |
-| Examination | Test prediction, explanation, application, and transfer; correct the smallest misconception first. |
-| Code review | Prioritize correctness and security; distinguish defects from preferences; verify findings. |
-| Retrieval | Mix recent and older material; favor reasoning over definitions; adapt to demonstrated understanding. |
+One hint at a time, asking before advancing, never more than one level without permission. An explicit **“no code”** instruction takes precedence.
 
 ## Learning Records
 
-The original [learning directory](https://github.com/i-am-manware/Manware-s-AI-Learning-Toolkit/tree/copilot/learning) contains four templates. The adaptation combines these templates in `references/logs.md`.
+`log` uses the four upstream templates — Concepts, Mistakes, Questions, Review — plus an Earendel **Automations** template. In an editor agent (Claude Code, Codex, Gemini CLI) it appends to a `learning/` folder in your project, after asking. In a chat app it gives you the entry to paste into your own notes; paste or attach the log back when you run `retrieve`. Entries keep your original reasoning, are dated, and are never rewritten.
 
-| Record | Shared information |
+## Editing Earendel
+
+Everything is generated from `src/`. Edit there, then rebuild:
+
+```bash
+python3 build.py          # regenerate every package
+python3 build.py --check  # fail if generated files are stale
+```
+
+| Path | Purpose |
 | --- | --- |
-| Concepts | Your explanation, corrected understanding, an example, and related concepts. |
-| Mistakes | The problem, mistake, original model, corrected model, category, prevention, and follow-up exercise. |
-| Questions | An unresolved question, context, current hypothesis, evidence to check, and status. |
-| Review | A recall prompt, last review date, confidence, and next review or exercise. |
+| `src/core.md` | Core rules shared by every package |
+| `src/workflows/*.md` | One file per workflow; `{{cmd:name}}` becomes the right command syntax for each tool |
+| `src/templates/log-templates.md` | Learning-log templates |
+| `plugins/earendel/` + `.claude-plugin/marketplace.json` | *Generated* — Claude Code plugin |
+| `skills/earendel/` | *Generated* — Agent Skills bundle (Claude app, Codex, ChatGPT desktop, Gemini) |
+| `commands/earendel/` + `gemini-extension.json` | *Generated* — Gemini CLI extension |
+| `chat/` | *Generated* — Gem / Custom GPT / Project instructions and knowledge file |
+| `dist/earendel-skill.zip` | *Generated* — uploadable skill |
+| `.github/` | Upstream Copilot version, unchanged |
 
-Both preserve original reasoning, use dates, and record meaningful insights or recurring patterns rather than every interaction. Neither should invent previous learning history.
+Validate with `claude plugin validate .` and [`skills-ref validate skills/earendel`](https://github.com/agentskills/agentskills/tree/main/skills-ref).
 
-The bundled templates are not populated progress records. In Earendel, saving learning history requires an available storage destination and user authorization. Installing the skill does not create automatic reminders or guarantee cross-chat recall.
+## Fork Attribution
 
-## File Mapping
+Earendel is a derivative adaptation of the original toolkit by **i-am-manware**. The original author receives credit for the teaching workflows, hint ladder, reusable learning behaviors, and log templates. This edition adds multi-platform packaging (Claude, ChatGPT/Codex, Gemini), a session router, the workflow-coaching mode, a learning-log command, mode boundaries, a Stoic learning mode, and the Earendel branding.
 
-| Original toolkit | Earendel |
-| --- | --- |
-| `.github/copilot-instructions.md` | Core teaching rules and mode boundaries in `SKILL.md` |
-| `.github/prompts/*.prompt.md` | Twelve workflow files under `references/`, routed from `SKILL.md` |
-| `.github/skills/*/SKILL.md` | Four reusable behaviors combined in `references/behaviors.md` |
-| `.github/instructions/learning-files.instructions.md` | Learning-record guidance in `references/logs.md` |
-| `learning/concepts.md` | Concepts template in `references/logs.md` |
-| `learning/mistakes.md` | Mistakes template in `references/logs.md` |
-| `learning/questions.md` | Questions template in `references/logs.md` |
-| `learning/review.md` | Review template in `references/logs.md` |
-
-The adaptation also includes `agents/openai.yaml` for skill metadata and `references/source.md` for provenance.
-
-## Using Earendel
-
-Invoke the installed skill with a request such as:
-
-> Use $earendel to teach me Python. Ask one question at a time and do not give me code.
-
-You can also start a message with the conversational shortcut `-*`:
-
-> -* teach me Python without giving me code.
-
-Use `-* /debug` to select a workflow. Send `-*` alone to resume a visible learning task, or choose a topic if none is established. Put a space between the marker and your request. Quoted markers and code examples do not activate the skill. This alias is handled by the skill instructions, not registered as an application command; `$earendel` remains the explicit named invocation.
-
-The skill is available globally as a reusable skill. It does not impose tutoring on every unrelated conversation.
-
-To switch from learning to direct implementation, explicitly say **“ship this”**, **“implement it”**, or **“just give me the code.”** Resume tutoring when you want to continue learning.
+“Fork” describes the project’s derivation here: a GitHub-hosted fork has not been created. Earendel is independently branded and is not an official upstream release. Previously named `manware-learning-chatgpt` and briefly MoM-z14.
 
 ## Stoic Learning — Earendel Extension
-
-Start a message with `/*s` to enter Stoic learning mode:
-
-> /*s help me handle frustration when learning something difficult.
-
-Send `/*s` alone to resume a visible Stoic session or choose a topic. You can also use `$earendel stoic` or `-* stoic`. These are conversational triggers; quoted text and source-code comments do not activate them.
 
 This mode teaches one idea or practical situation at a time:
 
@@ -139,9 +192,7 @@ This mode teaches one idea or practical situation at a time:
 5. Choose a small practical action.
 6. Reflect on the result and revisit the idea through active recall.
 
-The companion asks one question at a time. It treats emotions with care and supports constructive action, boundaries, and responsibility. Stoicism is not framed as emotional suppression or passive acceptance of mistreatment. Historical quotations and specific textual claims require verified sources; paraphrases are identified as such.
-
-The workflow lives in `references/stoic.md`. It is an Earendel addition, separate from the 12 workflows inherited from Manware. Learning logs remain optional and require authorization to save.
+It asks one question at a time, treats emotions with care, and supports constructive action, boundaries, and responsibility. Stoicism is not framed as emotional suppression or passive acceptance of mistreatment. Historical quotations require verified sources; paraphrases are identified as such.
 
 ## Source and Scope
 
@@ -149,7 +200,7 @@ The workflow lives in `references/stoic.md`. It is an Earendel addition, separat
 - **Source branch:** `copilot`
 - **Source commit:** `3eb77d0ec8b4835b31e5e848559153daf5f4af59`
 - **Adaptation and branding:** https://github.com/nxrzd — Earendel
-- **Adaptation date:** October 14, 2026
-- **Scope:** This comparison covers Manware and the ChatGPT adaptation. Cognia is not included in the installed adaptation described here.
+- **Adaptation date:** October 14, 2026 (multi-platform: October 25, 2026)
+- **Scope:** Manware and the Earendel adaptation. Cognia is not included.
 
 No license file was present in the inspected source tree. This README does not assert a new license for upstream material.
